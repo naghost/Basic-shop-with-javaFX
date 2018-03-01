@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="118.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FilaProductoController">
+   <children>
+      <HBox layoutX="100.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imagen" fitHeight="118.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="100.0" prefWidth="190.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="titulo" text="Label" textFill="#0a64ff">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="autor" text="Label" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="precio" text="Label">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Label>
+                     </children>
+                  </HBox>
+                  <Button fx:id="boton" mnemonicParsing="false" onAction="#mostrarProducto" text="Comprar">
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin></Button>
+               </children>
+               <HBox.margin>
+                  <Insets left="1.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
