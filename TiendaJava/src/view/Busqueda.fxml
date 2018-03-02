@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BusquedaController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,12 +36,12 @@
          <children>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Label">
+                  <Label fx:id="nombre" text="Label">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#mostrarCarrito" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
                         <Image url="@../Recursos/img/carro.png" />
                      </image>
@@ -46,7 +49,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#mostrarUsuario" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
                         <Image url="@../Recursos/img/usuario.png" />
                      </image>
@@ -54,7 +57,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                  <ImageView fitHeight="30.0" fitWidth="25.0" onMouseClicked="#salir" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
                         <Image url="@../Recursos/img/salir.png" />
                      </image>
@@ -70,7 +73,7 @@
             <HBox VBox.vgrow="ALWAYS">
                <children>
                   <TextField GridPane.columnIndex="1" HBox.hgrow="ALWAYS" />
-                  <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="25.0" onMouseClicked="#actualizarBusqueda" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Recursos/img/lupa.png" />
                      </image>

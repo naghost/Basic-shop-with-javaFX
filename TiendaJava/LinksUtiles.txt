@@ -1,0 +1,9 @@
+
+
+https://github.com/JuKu/javafx-listview-tutorial
+
+https://cmop17.wordpress.com/2010/05/22/recuperar-imagen-desde-base-de-datos-mysql/
+
+https://stackoverflow.com/questions/22710053/how-can-i-show-an-image-using-the-imageview-component-in-javafx-and-fxml
+
+https://github.com/NF1198/JavaFXCustomListViewExample
