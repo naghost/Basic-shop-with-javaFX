@@ -9,11 +9,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="118.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FilaProductoController">
+<AnchorPane fx:id="root" prefHeight="251.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FilaProductoController">
    <children>
-      <HBox layoutX="100.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="100.0" prefHeight="267.0" prefWidth="758.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-319.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imagen" fitHeight="118.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagen" fitHeight="267.0" fitWidth="263.0" pickOnBounds="true" preserveRatio="true" />
             <VBox prefHeight="100.0" prefWidth="190.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">

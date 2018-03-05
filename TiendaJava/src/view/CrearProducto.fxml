@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CrearProductoController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label alignment="CENTER" text="MiguelZon" textAlignment="CENTER" GridPane.columnSpan="2">
+         <font>
+            <Font name="Ubuntu Mono" size="66.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Titulo" GridPane.rowIndex="1" />
+      <Label text="Autor" GridPane.rowIndex="2" />
+      <Label text="Genero" GridPane.rowIndex="3" />
+      <Label text="Año" GridPane.rowIndex="4" />
+      <Label text="Precio" GridPane.rowIndex="5" />
+      <Label text="Stock" GridPane.rowIndex="6" />
+      <Label text="Tipo" GridPane.rowIndex="7" />
+      <TextField fx:id="Titulo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="Autor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="Genero" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="Año" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="Precio" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <TextField fx:id="Stock" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label text="Imagen" GridPane.rowIndex="8" />
+      <HBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <children>
+            <Label fx:id="ruta" text="Archivo sin seleccionar" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#seleccionarImagen" text="Seleccionar Archivo" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#guardarDatos" text="Guardar" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <ComboBox fx:id="tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>

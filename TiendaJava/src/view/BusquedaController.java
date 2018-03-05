@@ -1,10 +1,15 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import model.DAO;
+import model.ProductoModel;
 
-import javax.swing.text.html.ImageView;
+
 
 public class BusquedaController {
     @FXML
@@ -18,9 +23,9 @@ public class BusquedaController {
     @FXML
     ImageView buscar;
     @FXML
-    ListView<FilaProductoController> listview;
-    @FXML
-    Label titulo;
+    ListView<ProductoModel> listView = new ListView<>();
+
+    ObservableList<ProductoModel> productos = FXCollections.observableArrayList();
 
     @FXML
     public void mostrarCarrito(){}
@@ -31,7 +36,13 @@ public class BusquedaController {
     @FXML
     public void salir(){}
 
-    @FXML
-    public void actualizarBusqueda(){}
+    public void anadir(String busqueda){
+        listView.setCellFactory((lv) -> {
+        return FilaProductoController.newInstance();
+    });
+        DAO dao = new DAO();
+        productos = dao.buscar(busqueda, productos);
+        listView.setItems(productos);
+    }
 
 }
