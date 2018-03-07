@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminPanelController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" text="MiguelZon" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+         <font>
+            <Font name="Ubuntu Mono" size="66.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" GridPane.rowIndex="1">
+         <children>
+            <ImageView fx:id="imagen" fitHeight="75.0" fitWidth="125.0" onMouseClicked="#Productos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Recursos/img/gestion-productos.png" />
+               </image>
+            </ImageView>
+            <Label onMouseClicked="#Productos" text="Añadir productos">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" />
+         </GridPane.margin>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="100.0" onMouseClicked="#Atras" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Recursos/img/salir.png" />
+               </image>
+            </ImageView>
+            <Label onMouseClicked="#Atras" text="Atras">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Label>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="10.0" />
+         </GridPane.margin>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="125.0" onMouseClicked="#Usuarios" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Recursos/img/usuario.png" />
+               </image>
+            </ImageView>
+            <Label onMouseClicked="#Usuarios" text="Usuarios" />
+         </children>
+      </VBox>
+   </children>
+</GridPane>

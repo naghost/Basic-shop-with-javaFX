@@ -55,7 +55,7 @@
             </ImageView>
          </children>
       </HBox>
-      <Label text="MiguelZon" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="MiguelZon" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="Ubuntu Mono" size="83.0" />
          </font>
@@ -63,41 +63,56 @@
             <Reflection />
          </effect>
       </Label>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
          <children>
-            <Label fx:id="Nombre" />
-            <Button fx:id="boton" alignment="CENTER" mnemonicParsing="false" onAction="#iniciar" text="Iniciar Sesion" textAlignment="CENTER" />
-            <HBox alignment="CENTER">
+            <HBox fx:id="imagenes" alignment="CENTER" fillHeight="false" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
                <children>
-                  <ImageView fx:id="usuario" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../Recursos/img/usuario.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fx:id="carrito" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../Recursos/img/carro.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fx:id="salir" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../Recursos/img/salir.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin>
-                  </ImageView>
+                  <Label fx:id="Nombre" text="Label">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding></Label>
+                  <HBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ImageView fx:id="admin" fitHeight="150.0" fitWidth="50.0" onMouseClicked="#Administrador" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../Recursos/img/admin.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="usuario" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../Recursos/img/usuario.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="carrito" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../Recursos/img/carro.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="salir" fitHeight="150.0" fitWidth="50.0" onMouseClicked="#Salir" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../Recursos/img/salir.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets right="60.0" />
+                     </opaqueInsets>
+                  </HBox>
                </children>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
             </HBox>
+            <Button fx:id="boton" alignment="CENTER" mnemonicParsing="false" onAction="#iniciar" text="Iniciar Sesion" textAlignment="CENTER" />
          </children>
       </HBox>
    </children>

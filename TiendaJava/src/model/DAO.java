@@ -133,11 +133,11 @@ public class DAO {
     }
 
     public void RegistrarProducto(String text, String autorText, String generoText, int anio, double precio, int stock, String value, FileInputStream fileInputStream) {
-
+        PreparedStatement stmt =null;
         try {
             String sql ="INSERT INTO Productos VALUES(NULL, ?,?,?,?,?,?,?,?)";
 
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt = connection.prepareStatement(sql);
             stmt.setBlob(1, fileInputStream);
             stmt.setString(2, text);
             stmt.setString(3,autorText);
@@ -161,12 +161,193 @@ public class DAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (connection!=null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (stmt!=null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
+    }
+
+    public ObservableList<UsuarioModelFX> mostrarTodosUsuarios(ObservableList<UsuarioModelFX> lista) {
+        String query = "SELECT * FROM Usuario";
+        Statement stmt = null;
+        try{
+            stmt=connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            UsuarioModelFX usuario;
+            while (rs.next()){
+                usuario = new UsuarioModelFX();
+
+                usuario.setIDUsuario(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setDNI(rs.getString(4));
+                usuario.setTelefono(rs.getInt(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setEmail(rs.getString(7));
+                usuario.setPassword(rs.getString(8));
+                usuario.setAdmin(rs.getInt(9));
+                lista.add(usuario);
+            }
+        } catch (SQLException e) {
+
+        }finally {
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return lista;
+    }
+
+    public void editarUsuario(UsuarioModelFX modelo) {
+        String sql = "UPDATE Usuario SET Nombre = ?, Apellidos = ?, DNI = ?, Telefono = ?, Direccion = ?, Email = ?, Password = ?, Admin = ? WHERE IDUsuario = ?";
+        PreparedStatement stmt = null;
+        try{
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, modelo.getNombre());
+            System.out.println(modelo.getNombre());
+            stmt.setString(2, modelo.getApellidos());
+            stmt.setString(3, modelo.getDNI());
+            stmt.setInt(4, modelo.getTelefono());
+            stmt.setString(5, modelo.getDireccion());
+            stmt.setString(6, modelo.getEmail());
+            stmt.setString(7, modelo.getPassword());
+            stmt.setInt(8, modelo.getAdmin());
+            stmt.setInt(9, modelo.getIDUsuario());
+            int count = stmt.executeUpdate();
+            System.out.println(count);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
+    public void eliminarUsuario(UsuarioModelFX usuario) {
+        String sql = "DELETE FROM Usuario WHERE IDUsuario= ?";
+        PreparedStatement stmt = null;
+        try{
+            stmt= connection.prepareStatement(sql);
+            stmt.setInt(1, usuario.getIDUsuario());
+            stmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<UsuarioModelFX> buscarUsuarios(ObservableList<UsuarioModelFX> options, String busqueda, String filtro) {
+        PreparedStatement stmt = null;
+        String sql = null;
+
+        switch (filtro){
+            case "Nombre":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Nombre) LIKE UPPER(?)";
+                break;
+            case "Apellidos":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Apellidos) LIKE UPPER(?)";
+                break;
+            case "DNI":
+                sql = "SELECT * FROM Usuario WHERE UPPER(DNI) LIKE UPPER(?)";
+                break;
+            case "Direccion":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Direccion) LIKE UPPER(?)";
+                break;
+            case "Email":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Email) LIKE UPPER(?)";
+                break;
+            case "Telefono":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Telefono) LIKE UPPER(?)";
+                break;
+            case "Admin":
+                sql = "SELECT * FROM Usuario WHERE UPPER(Admin) LIKE UPPER(?)";
+                break;
+        }
+
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1,"%"+busqueda+"%");
+
+            ResultSet rs= stmt.executeQuery();
+            UsuarioModelFX usuario = null;
+            while (rs.next()){
+                usuario = new UsuarioModelFX();
+                usuario.setIDUsuario(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setDNI(rs.getString(4));
+                usuario.setTelefono(rs.getInt(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setEmail(rs.getString(7));
+                usuario.setPassword(rs.getString(8));
+                usuario.setAdmin(rs.getInt(9));
+                options.add(usuario);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return options;
+    }
+
+    public ObservableList<FacturaModelFX> FacturaUsuario(ObservableList<FacturaModelFX> lista, UsuarioModelFX consulta) {
+        String sql = "SELECT Factura.IDFactura, Factura.Fecha-Hora, Usuario.Nombre, Estado.Nombre FROM Factura INNER JOIN Usuario ON Factura.IDUsuario=Usuario.IDUsuario INNER JOIN Estado ON Factura.IDEstado=Estado.IDEstado WHERE IDUsuario=?";
+        PreparedStatement stmt = null;
+
+        try{
+            stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            FacturaModelFX factura = null;
+
+            while (rs.next()){
+                factura.setIDFactura(rs.getInt(1));
+                factura.setFechaHora(rs.getString(2));
+                factura.setUsuario(rs.getString(3));
+                factura.setEstado(rs.getString(4));
+                lista.add(factura);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
     }
 }
