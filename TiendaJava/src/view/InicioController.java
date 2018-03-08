@@ -135,6 +135,24 @@ public class InicioController {
     }
 
     @FXML
+    public void panelUsuario(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UsuarioPane.fxml"));
+            Parent root1= null;
+            root1 = (Parent)fxmlLoader.load();
+            stage= new Stage();
+            stage.setScene(new Scene(root1));
+            UsuarioPaneController a = (UsuarioPaneController) fxmlLoader.getController();
+            a.setDatos(carro,datos);
+            stage.show();
+            Stage b = (Stage) imagenes.getScene().getWindow();
+            b.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void Salir(){
         Stage a = (Stage) imagenes.getScene().getWindow();
         a.close();

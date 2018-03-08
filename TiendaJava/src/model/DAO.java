@@ -15,10 +15,9 @@ import java.sql.*;
 
 public class DAO {
     Connection connection = null;
+
     public DAO(){
 
-// Database connect
-// Conectamos con la base de datos
         try {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/Tienda",
@@ -27,12 +26,14 @@ public class DAO {
             e.printStackTrace();
         }
     }
+
     public UsuarioModel comprobarInicio(UsuarioModel datos) {
         String sql = "SELECT * FROM Usuario WHERE Email='"+datos.getEmail()+"' AND Password='"+datos.getPassword()+"'";
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs =stmt.executeQuery(sql);
             while (rs.next()){
+                datos.setIDUsuario(rs.getInt("IDUsuario"));
                 datos.setNombre(rs.getString("Nombre"));
                 datos.setApellidos(rs.getString("Apellidos"));
                 datos.setDNI(rs.getString("DNI"));
