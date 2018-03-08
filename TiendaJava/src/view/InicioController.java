@@ -38,7 +38,9 @@ public class InicioController {
     HBox imagenes;
 
     Stage stage;
+
     UsuarioModel datos;
+
     ArrayList<ProductoModel> carro = new ArrayList<>();
 
     @FXML
@@ -53,6 +55,7 @@ public class InicioController {
             stage.setTitle("MiguelZon - Busqueda: "+texto.getText());
             BusquedaController controller = (BusquedaController) fxmlLoader.getController();
             controller.anadir(texto.getText());
+            controller.setData(datos,carro);
             stage.show();
             Stage aqui = (Stage) salir.getScene().getWindow();
             aqui.close();

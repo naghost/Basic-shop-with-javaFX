@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MostrarProductoController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="644.0" minWidth="10.0" prefWidth="349.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="951.0" minWidth="10.0" prefWidth="951.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ImageView fx:id="imagen" fitHeight="266.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true">
+         <GridPane.margin>
+            <Insets right="20.0" top="10.0" />
+         </GridPane.margin></ImageView>
+      <VBox GridPane.columnIndex="1">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="Titulo" text="Titulo">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Autor" alignment="BOTTOM_LEFT" text="Autor">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <Text fx:id="Descripcion" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" underline="true" GridPane.columnIndex="1">
+               <VBox.margin>
+                  <Insets left="20.0" top="30.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Precio:">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="Precio" text="Label">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </HBox>
+            <Button fx:id="boton" mnemonicParsing="false" text="Añadir al carrito">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label text="Seccion de administracion">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="75.0" fitWidth="125.0" onMouseClicked="#stock" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Recursos/img/mas.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="75.0" fitWidth="125.0" onMouseClicked="#editarProducto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Recursos/img/editar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="75.0" fitWidth="125.0" onMouseClicked="#eliminarProducto" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Recursos/img/basura.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</GridPane>

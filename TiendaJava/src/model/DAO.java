@@ -22,7 +22,7 @@ public class DAO {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/Tienda",
-                    "root", "");
+                    "root", "ta-088v3");
         } catch (SQLException e) {
             e.printStackTrace();
         }
