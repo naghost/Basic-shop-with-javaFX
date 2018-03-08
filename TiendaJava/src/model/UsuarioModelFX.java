@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,15 +30,26 @@ public class UsuarioModelFX {
     }
 
     public UsuarioModelFX(UsuarioModel usuario){
-        IDUsuario = new SimpleIntegerProperty(usuario.getIDUsuario());
-        Nombre = new SimpleStringProperty(usuario.getNombre());
-        Apellidos = new SimpleStringProperty(usuario.getApellidos());
-        DNI = new SimpleStringProperty(usuario.getDNI());
-        Telefono = new SimpleIntegerProperty(usuario.getTelefono());
-        Direccion = new SimpleStringProperty(usuario.getDireccion());
-        Email = new SimpleStringProperty(usuario.getEmail());
-        Password = new SimpleStringProperty(usuario.getPassword());
-        Admin = new SimpleIntegerProperty(usuario.getAdmin());
+        IDUsuario = new SimpleIntegerProperty();
+        Nombre = new SimpleStringProperty();
+        Apellidos = new SimpleStringProperty();
+        DNI = new SimpleStringProperty();
+        Telefono = new SimpleIntegerProperty();
+        Direccion = new SimpleStringProperty();
+        Email = new SimpleStringProperty();
+        Password = new SimpleStringProperty();
+        Admin = new SimpleIntegerProperty();
+
+        System.out.println(usuario.getIDUsuario());
+        setIDUsuario(usuario.getIDUsuario());
+        setNombre(usuario.getNombre());
+        setApellidos(usuario.getApellidos());
+        setDNI(usuario.getDNI());
+        setTelefono(usuario.getTelefono());
+        setDireccion(usuario.getDireccion());
+        setEmail(usuario.getEmail());
+        setPassword(usuario.getPassword());
+        setAdmin(usuario.getAdmin());
     }
 
     public int getIDUsuario() {
