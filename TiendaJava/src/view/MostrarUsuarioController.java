@@ -3,11 +3,14 @@ package view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.*;
+
+import java.io.IOException;
 
 public class MostrarUsuarioController {
 
@@ -26,27 +29,54 @@ public class MostrarUsuarioController {
     ComboBox comboBox;
     @FXML
     TextField buscar;
-    UsuarioModelFX consulta;
-    UsuarioModel usuario;
+    @FXML
+    Label Nombre;
+    @FXML
+    Label Apellidos;
+    @FXML
+    Label Direccion;
+    @FXML
+    Label DNI;
+    @FXML
+    Label Telefono;
+    @FXML
+    Label Email;
 
+    UsuarioModelFX consulta;
+
+    UsuarioModel usuario;
 
     @FXML
     public void initialize(){
-        rellenarLista();
-        if (usuario.getAdmin()==1){
-            Edicion();
-        }else{
-            NoEditar();
-        }
-
         Numero.setCellValueFactory(cellData -> cellData.getValue().IDFacturaProperty());
         FechaHora.setCellValueFactory(cellData -> cellData.getValue().fechaHoraProperty());
         Usuario.setCellValueFactory(cellData -> cellData.getValue().usuarioProperty());
         Estado.setCellValueFactory(cellData -> cellData.getValue().estadoProperty());
+    }
 
+    @FXML
+    public void Mostrar(){
+        FacturaModelFX seleccion = tabla.getSelectionModel().getSelectedItem();
+        Stage stage = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MostrarFactura.fxml"));
+        Parent root1= null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root1));
+            MostrarFacturaController f =(MostrarFacturaController) fxmlLoader.getController();
+            f.setUsuarioFactura(consulta, seleccion, usuario);
+
+            stage.show();
+
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void Edicion() {
+
     }
 
     private void NoEditar() {
@@ -63,14 +93,29 @@ public class MostrarUsuarioController {
         tabla.setItems(lista);
     }
 
-    @FXML
-    public void Mostrar(){}
-
-    @FXML
-    public void Buscar(){}
-
     public void setUsuario(UsuarioModel usuario){
+
         this.usuario = usuario;
     }
 
+    public void setUsuario(UsuarioModel usuario, UsuarioModelFX seleccion) {
+        this.usuario=usuario;
+        this.consulta=seleccion;
+        rellenarLista();
+        Permisos();
+        DatosUsuario();
+    }
+
+    private void DatosUsuario() {
+        this.Nombre.setText(consulta.getNombre());
+        this.Apellidos.setText(consulta.getApellidos());
+        this.Direccion.setText(consulta.getDireccion());
+        this.DNI.setText(consulta.getDireccion());
+        this.Telefono.setText(String.valueOf(consulta.getTelefono()));
+        this.Email.setText(consulta.getEmail());
+    }
+
+    private void Permisos() {
+            NoEditar();
+    }
 }

@@ -22,7 +22,7 @@ public class DAO {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/Tienda",
-                    "root", "ta-088v3");
+                    "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -328,15 +328,17 @@ public class DAO {
     }
 
     public ObservableList<FacturaModelFX> FacturaUsuario(ObservableList<FacturaModelFX> lista, UsuarioModelFX consulta) {
-        String sql = "SELECT Factura.IDFactura, Factura.Fecha-Hora, Usuario.Nombre, Estado.Nombre FROM Factura INNER JOIN Usuario ON Factura.IDUsuario=Usuario.IDUsuario INNER JOIN Estado ON Factura.IDEstado=Estado.IDEstado WHERE IDUsuario=?";
+        String sql = "SELECT Factura.IDFactura, Factura.FechaHora, Usuario.Nombre, Estado.Nombre FROM Factura INNER JOIN Usuario ON Factura.IDUsuario=Usuario.IDUsuario INNER JOIN Estado ON Factura.IDEstado=Estado.IDEstado WHERE Factura.IDUsuario=?";
         PreparedStatement stmt = null;
 
         try{
             stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,consulta.getIDUsuario());
             ResultSet rs = stmt.executeQuery();
             FacturaModelFX factura = null;
 
             while (rs.next()){
+                factura = new FacturaModelFX();
                 factura.setIDFactura(rs.getInt(1));
                 factura.setFechaHora(rs.getString(2));
                 factura.setUsuario(rs.getString(3));
@@ -349,5 +351,60 @@ public class DAO {
         }
 
         return lista;
+    }
+
+    public ObservableList<ProductoCompradoModel> buscarProductoFactura(FacturaModelFX factura, ObservableList<ProductoCompradoModel> lista) {
+        String sql = "SELECT Productos.Titulo, ProductosFactura.Cantidad, ProductosFactura.Precio, ProductosFactura.IDProducto FROM ProductosFactura INNER JOIN Productos ON ProductosFactura.IDProducto = Productos.IDProducto WHERE ProductosFactura.IDFactura=? ";
+        PreparedStatement stmt = null;
+        try{
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, factura.getIDFactura());
+            ResultSet rs = stmt.executeQuery();
+            ProductoCompradoModel producto;
+            while (rs.next()){
+                producto = new ProductoCompradoModel();
+                producto.setNombre(rs.getString(1));
+                producto.setCantidad(rs.getInt(2));
+                producto.setPrecio(rs.getDouble(3));
+                producto.setIDProducto(rs.getInt(4));
+                lista.add(producto);
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return lista;
+    }
+
+    public void devolucion(ProductoCompradoModel producto, FacturaModelFX factura) {
+        String sql = "UPDATE ProductosFactura SET Cantidad=? WHERE IDFactura=? AND IDProducto=?";
+        PreparedStatement stmt = null;
+        try{
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,producto.getCantidad());
+            stmt.setInt(2, factura.getIDFactura());
+            stmt.setInt(3, producto.getIDProducto());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

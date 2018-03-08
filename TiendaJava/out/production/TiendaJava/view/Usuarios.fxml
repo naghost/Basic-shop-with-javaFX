@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UsuariosController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UsuariosController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,15 +40,18 @@
       </HBox>
       <TableView fx:id="tabla" editable="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
         <columns>
-          <TableColumn fx:id="Nombre" maxWidth="1.7976931348623157E308" minWidth="-1.0" onEditCommit="#editarClienteString" prefWidth="140.0" text="Nombre" />
-          <TableColumn fx:id="Apellido" minWidth="0.0" onEditCommit="#editarClienteString" prefWidth="108.0" text="Apellidos" />
-            <TableColumn fx:id="DNI" minWidth="0.0" onEditCommit="#editarClienteString" prefWidth="101.0" text="DNI" />
-            <TableColumn fx:id="Telefono" minWidth="0.0" onEditCommit="#editarClienteInt" prefWidth="130.0" text="Telefono" />
-            <TableColumn fx:id="Direccion" onEditCommit="#editarClienteString" prefWidth="286.0" text="Direccion" />
-            <TableColumn fx:id="Email" onEditCommit="#editarClienteString" prefWidth="304.0" text="Email" />
-            <TableColumn fx:id="Password" onEditCommit="#editarClienteString" prefWidth="157.0" text="Password" />
-            <TableColumn fx:id="Admin" minWidth="0.0" onEditCommit="#editarClienteInt" prefWidth="73.0" text="Admin" />
+          <TableColumn fx:id="Nombre" maxWidth="2000.0" minWidth="-1.0" onEditCommit="#editarClienteString" prefWidth="140.0" text="Nombre" />
+          <TableColumn fx:id="Apellido" maxWidth="2000.0" minWidth="-1.0" onEditCommit="#editarClienteString" prefWidth="140.0" text="Apellidos" />
+            <TableColumn fx:id="DNI" maxWidth="2000.0" minWidth="-1.0" onEditCommit="#editarClienteString" prefWidth="140.0" text="DNI" />
+            <TableColumn fx:id="Telefono" maxWidth="4000.0" minWidth="0.0" onEditCommit="#editarClienteInt" prefWidth="160.0" text="Telefono" />
+            <TableColumn fx:id="Direccion" maxWidth="6000.0" minWidth="-1.0" onEditCommit="#editarClienteString" prefWidth="286.0" text="Direccion" />
+            <TableColumn fx:id="Email" maxWidth="6000.0" onEditCommit="#editarClienteString" prefWidth="304.0" text="Email" />
+            <TableColumn fx:id="Password" maxWidth="6000.0" minWidth="-Infinity" onEditCommit="#editarClienteString" prefWidth="157.0" text="Password" />
+            <TableColumn fx:id="Admin" maxWidth="1000.0" minWidth="-1.0" onEditCommit="#editarClienteInt" prefWidth="73.0" text="Admin" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <VBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
          <children>
@@ -69,7 +78,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#mostrarUsuario" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets right="40.0" />
                      </HBox.margin>

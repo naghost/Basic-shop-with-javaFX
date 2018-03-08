@@ -3,16 +3,21 @@ package view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 import model.DAO;
 import model.UsuarioModel;
 import model.UsuarioModelFX;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -139,7 +144,23 @@ public class UsuariosController {
 
     @FXML
     public void mostrarUsuario(){
+        UsuarioModelFX seleccion = tabla.getSelectionModel().getSelectedItem();
+        Stage stage = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MostrarUsuario.fxml"));
+        Parent root1= null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root1));
+            MostrarUsuarioController usr =(MostrarUsuarioController) fxmlLoader.getController();
+            usr.setUsuario(usuario, seleccion);
 
+            stage.show();
+
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setUsuario(UsuarioModel usuario){
