@@ -39,6 +39,8 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     ArrayList<ProductoModel> carro;
 
+    Label contador;
+
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
     public static FilaProductoController newInstance(){
@@ -79,6 +81,7 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
                 boton.setDisable(true);
                 boton.setText("Producto no disponible");
             }
+            contador=item.getContador();
 
         }
         // keep a reference to the model item in the ListCell
@@ -87,7 +90,18 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     @FXML
     public void añadirCarro(){
-        carro.add(model);
+        boolean existe = false;
+        for(int i=0;i<carro.size();i++){
+            if(carro.get(i).getId()== model.getId()){
+                existe=true;
+                model.setCantidad(model.getCantidad()+1);
+            }
+        }
+        if(!existe){
+            carro.add(model);
+            }
+        System.out.println(carro.size());
+        contador.setText(String.valueOf(carro.size()));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informacion");
         alert.setHeaderText(null);

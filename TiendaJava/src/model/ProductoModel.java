@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
@@ -16,7 +17,30 @@ public class ProductoModel {
     DoubleProperty Precio = new SimpleDoubleProperty();
     IntegerProperty Stock = new SimpleIntegerProperty();
     StringProperty Tipo = new SimpleStringProperty();
+    IntegerProperty cantidad = new SimpleIntegerProperty();
+
+    public int getCantidad() {
+        return cantidad.get();
+    }
+
+    public IntegerProperty cantidadProperty() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad.set(cantidad);
+    }
+
     ArrayList<ProductoModel> carrito;
+    Label contador;
+
+    public Label getContador() {
+        return contador;
+    }
+
+    public void setContador(Label contador) {
+        this.contador = contador;
+    }
 
     public ArrayList<ProductoModel> getCarrito() {
         return carrito;

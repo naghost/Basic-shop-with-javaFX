@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -36,6 +33,8 @@ public class InicioController {
     ImageView admin;
     @FXML
     HBox imagenes;
+    @FXML
+    Label contador;
 
     Stage stage;
 
@@ -43,25 +42,35 @@ public class InicioController {
 
     ArrayList<ProductoModel> carro = new ArrayList<>();
 
+
     @FXML
     public void buscar(){
-        try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Busqueda.fxml"));
-        Parent root1= null;
+        if(!texto.getText().equals("")) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Busqueda.fxml"));
+                Parent root1 = null;
 
-            root1 = (Parent)fxmlLoader.load();
-            stage= new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("MiguelZon - Busqueda: "+texto.getText());
-            BusquedaController controller = (BusquedaController) fxmlLoader.getController();
-            controller.setData(datos,carro);
-            controller.anadir(texto.getText());
-            stage.show();
-            Stage aqui = (Stage) salir.getScene().getWindow();
-            aqui.close();
+                root1 = (Parent) fxmlLoader.load();
+                stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("MiguelZon - Busqueda: " + texto.getText());
+                BusquedaController controller = (BusquedaController) fxmlLoader.getController();
+                controller.setData(datos, carro);
+                controller.anadir(texto.getText());
+                stage.show();
+                Stage aqui = (Stage) salir.getScene().getWindow();
+                aqui.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informacion");
+            alert.setHeaderText(null);
+            alert.setContentText("Necesitas rellenar el campo");
+
+            alert.showAndWait();
         }
 
 
@@ -109,6 +118,7 @@ public class InicioController {
 
     public void añadirCarro(ArrayList<ProductoModel> usuario){
         this.carro=usuario;
+        this.contador.setText(String.valueOf(this.carro.size()));
     }
 
     public void sesionIniciada(UsuarioModel datos) {

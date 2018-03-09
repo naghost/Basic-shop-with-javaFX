@@ -41,6 +41,8 @@ public class BusquedaController {
     HBox cajaBoton;
     @FXML
     Button IniciarSesion;
+    @FXML
+    Label contador;
 
     ObservableList<ProductoModel> productos;
 
@@ -53,6 +55,7 @@ public class BusquedaController {
         listView.setCellFactory((lv) -> {
             return FilaProductoController.newInstance();
         });
+
     }
     @FXML
     public void actualizarBusqueda(){
@@ -60,7 +63,23 @@ public class BusquedaController {
     }
 
     @FXML
-    public void mostrarCarrito(){}
+    public void mostrarCarrito(){
+        Stage stage = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Carro.fxml"));
+            Parent root1= null;
+            root1 = (Parent)fxmlLoader.load();
+            stage= new Stage();
+            stage.setScene(new Scene(root1));
+            CarroController a = (CarroController) fxmlLoader.getController();
+            a.llenar(carro,Usuario);
+            stage.show();
+            Stage b = (Stage) admin.getScene().getWindow();
+            b.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void mostrarAdmin(){
         Stage stage = null;
@@ -130,7 +149,7 @@ public class BusquedaController {
         productos = FXCollections.observableArrayList();
 
         DAO dao = new DAO();
-        productos = dao.buscar(busqueda, productos, carro);
+        productos = dao.buscar(busqueda, productos, carro, contador);
         listView.getItems().clear();
         listView.setItems(productos);
         listView.refresh();
@@ -139,6 +158,7 @@ public class BusquedaController {
     
     public void setData(UsuarioModel usuario,ArrayList<ProductoModel> carro){
         this.carro=carro;
+        contador.setText(String.valueOf(carro.size()));
         if (usuario==null){
             ocultar();
         }else{
@@ -165,6 +185,7 @@ public class BusquedaController {
         carrito.setVisible(false);
         nombre.setVisible(false);
         admin.setVisible(false);
+        contador.setVisible(false);
         IniciarSesion.setVisible(true);
     }
     private void mostrar(){
@@ -180,6 +201,7 @@ public class BusquedaController {
         cajaUsuario.setMinWidth(Control.USE_COMPUTED_SIZE);
         cajaUsuario.setMinHeight(Control.USE_COMPUTED_SIZE);
 
+        contador.setVisible(true);
         usuario.setVisible(true);
         salir.setVisible(true);
         carrito.setVisible(true);

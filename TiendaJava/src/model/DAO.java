@@ -2,6 +2,7 @@ package model;
 
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 
@@ -91,7 +92,7 @@ public class DAO {
 
     }
 
-    public ObservableList<ProductoModel> buscar(String busqueda, ObservableList<ProductoModel> listView, ArrayList<ProductoModel> carro) {
+    public ObservableList<ProductoModel> buscar(String busqueda, ObservableList<ProductoModel> listView, ArrayList<ProductoModel> carro, Label contador) {
         String sql = "SELECT Productos.IDProducto, Productos.Imagen, Productos.Titulo, Productos.Autor, Productos.Genero, Productos.Año, Productos.Precio, Productos.Stock, Tipo.Nombre FROM Productos INNER JOIN Tipo ON Productos.IDTipo = Tipo.IDTipo WHERE UPPER(Titulo) LIKE UPPER('%"+busqueda+"%')";
         Statement stmt = null;
         try {
@@ -113,6 +114,7 @@ public class DAO {
                 producto.setPrecio(rs.getDouble("Precio"));
                 producto.setTipo(rs.getString("Nombre"));
                 producto.setCarrito(carro);
+                producto.setContador(contador);
                 listView.add(producto);
             }
 

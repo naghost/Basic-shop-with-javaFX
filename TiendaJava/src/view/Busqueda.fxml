@@ -57,7 +57,8 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="carrito" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <Label fx:id="contador" onMouseClicked="#mostrarCarrito" text="0" textFill="#e51717" />
+                        <ImageView fx:id="carrito" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#mostrarCarrito" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
                               <Image url="@../Recursos/img/carro.png" />
                            </image>

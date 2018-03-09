@@ -71,7 +71,7 @@
                               <Image url="@../Recursos/img/admin.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </ImageView>
                         <ImageView fx:id="usuario" fitHeight="150.0" fitWidth="50.0" onMouseClicked="#panelUsuario" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -79,15 +79,16 @@
                               <Image url="@../Recursos/img/usuario.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </ImageView>
+                        <Label fx:id="contador" text="Label" textFill="RED" />
                         <ImageView fx:id="carrito" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../Recursos/img/carro.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </ImageView>
                         <ImageView fx:id="salir" fitHeight="150.0" fitWidth="50.0" onMouseClicked="#Salir" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -95,7 +96,7 @@
                               <Image url="@../Recursos/img/salir.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="30.0" />
                            </HBox.margin>
                         </ImageView>
                      </children>
