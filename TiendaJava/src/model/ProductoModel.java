@@ -17,7 +17,7 @@ public class ProductoModel {
     DoubleProperty Precio = new SimpleDoubleProperty();
     IntegerProperty Stock = new SimpleIntegerProperty();
     StringProperty Tipo = new SimpleStringProperty();
-    IntegerProperty cantidad = new SimpleIntegerProperty();
+    IntegerProperty cantidad = new SimpleIntegerProperty(1);
 
     public int getCantidad() {
         return cantidad.get();

@@ -4,11 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import model.ProductoModel;
 import model.UsuarioModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -27,12 +32,15 @@ public class CarroController {
     Label Email;
     @FXML
     ListView<ProductoModel> Lista;
+    @FXML
+    Label Precio;
 
     UsuarioModel usuario;
 
     ArrayList<ProductoModel> carro;
 
     ObservableList<ProductoModel> Productos;
+
 
     @FXML
     public void initialize(){
@@ -46,7 +54,26 @@ public class CarroController {
     public void comprar(){}
 
     @FXML
-    public void atras(){}
+    public void atras(){
+        Stage stage = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+        Parent root1= null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+            InicioController inicio = (InicioController) fxmlLoader.getController();
+            inicio.sesionIniciada(usuario);
+            inicio.añadirCarro(carro);
+
+            Stage st =(Stage)Email.getScene().getWindow();
+            st.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void llenar(ArrayList<ProductoModel> carro, UsuarioModel usuario){
         this.carro= carro;
@@ -59,7 +86,16 @@ public class CarroController {
         this.Email.setText(this.usuario.getEmail());
         Productos = FXCollections.observableArrayList(this.carro);
         Lista.setItems(Productos);
+        SumaTotal();
+
     }
 
+    public void SumaTotal(){
+        Double Contador = 0.0;
+        for(int i=0;i<carro.size();i++){
+          Contador= Contador+carro.get(i).getPrecio()*carro.get(i).getCantidad();
+        }
+        Precio.setText("Precio: "+String.valueOf(Contador)+" €");
+    }
 
 }

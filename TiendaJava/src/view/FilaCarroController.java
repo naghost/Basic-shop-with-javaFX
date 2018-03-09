@@ -1,10 +1,14 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class FilaCarroController extends ListCell<ProductoModel> implements Initializable {
+public class FilaCarroController extends ListCell<ProductoModel> implements Initializable, ChangeListener<String> {
 
     @FXML
     ImageView imagen;
@@ -40,6 +44,11 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
 
     Label contador;
 
+    ObservableList<ProductoModel> productos;
+
+    ListView<ProductoModel> listView;
+
+
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
     public static FilaCarroController newInstance(){
@@ -56,6 +65,11 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
 
     @FXML
     public void mostrarProducto(){
+
+    }
+
+    @FXML
+    public void eliminarProducto(){
 
     }
 
@@ -76,9 +90,25 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
                 Autor.setText("de "+item.getAutor());
                 Precio.setText("EUR "+item.getPrecio());
                 Cantidad.setText(String.valueOf(item.getCantidad()));
+                 Cantidad.textProperty().addListener(this);
 
         }
         // keep a reference to the model item in the ListCell
         this.model = item;
+
+
+    }
+
+    @Override
+    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        if (!newValue.matches("\\d*")) {
+            Cantidad.setText(newValue.replaceAll("[^\\d]", ""));
+        }else {
+            if (!newValue.equals("")) {
+                if (model.getStock() < Integer.parseInt(newValue)) {
+                    Cantidad.setText(oldValue);
+                }
+            }
+        }
     }
 }

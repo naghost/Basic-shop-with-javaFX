@@ -41,6 +41,7 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     Label contador;
 
+
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
     public static FilaProductoController newInstance(){
@@ -94,20 +95,36 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
         for(int i=0;i<carro.size();i++){
             if(carro.get(i).getId()== model.getId()){
                 existe=true;
-                model.setCantidad(model.getCantidad()+1);
+                if ((model.getCantidad()+1)<=model.getStock()) {
+                    model.setCantidad(model.getCantidad() + 1);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Informacion");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Producto añadido");
+
+                    alert.showAndWait();
+                }else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Informacion");
+                    alert.setHeaderText(null);
+                    alert.setContentText("No hay suficiente stock");
+
+                    alert.showAndWait();
+                }
             }
         }
         if(!existe){
             carro.add(model);
-            }
-        System.out.println(carro.size());
-        contador.setText(String.valueOf(carro.size()));
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Informacion");
-        alert.setHeaderText(null);
-        alert.setContentText("Producto añadido");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informacion");
+            alert.setHeaderText(null);
+            alert.setContentText("Producto añadido");
 
-        alert.showAndWait();
+            alert.showAndWait();
+            }
+
+        contador.setText(String.valueOf(carro.size()));
+
 
     }
 }

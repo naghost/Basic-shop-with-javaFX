@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,16 +16,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="218.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FilaCarroController">
+<AnchorPane fx:id="root" prefHeight="218.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FilaCarroController">
    <children>
       <HBox fillHeight="false" layoutX="100.0" prefHeight="218.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="imagen" fitHeight="218.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" />
-            <VBox fillWidth="false" prefHeight="226.0" prefWidth="190.0">
+            <VBox fillWidth="false" maxWidth="1.7976931348623157E308" prefHeight="218.0" prefWidth="217.0" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="195.0">
+                  <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="23.0">
                      <children>
-                        <Label fx:id="Titulo" text="Label" textFill="#0a64ff">
+                        <Label fx:id="Titulo" maxWidth="1.7976931348623157E308" text="En el viento" textFill="#0a64ff">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -27,7 +33,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="Año" text="Label" />
+                        <Label fx:id="Año" text="Año 1994" />
                      </children>
                   </HBox>
                   <Label fx:id="Autor" text="Label">
@@ -45,27 +51,20 @@
                   <Insets left="40.0" />
                </HBox.margin>
             </VBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="120.0">
                <children>
                   <Label text="Cantidad: ">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="Cantidad" minWidth="20.0" prefWidth="30.0" />
+                  <TextField fx:id="Cantidad" minWidth="20.0" prefWidth="40.0" />
                </children>
                <HBox.margin>
                   <Insets top="90.0" />
                </HBox.margin>
             </HBox>
             <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Recursos/img/eliminar.png" />
-                     </image>
-                  </ImageView>
-               </children>
                <HBox.margin>
                   <Insets top="90.0" />
                </HBox.margin>
