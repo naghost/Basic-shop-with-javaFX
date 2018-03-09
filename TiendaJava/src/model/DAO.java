@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DAO {
     Connection connection = null;
@@ -21,7 +22,7 @@ public class DAO {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/Tienda",
-                    "root", "ta-088v3");
+                    "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,7 +91,7 @@ public class DAO {
 
     }
 
-    public ObservableList<ProductoModel> buscar(String busqueda, ObservableList<ProductoModel> listView) {
+    public ObservableList<ProductoModel> buscar(String busqueda, ObservableList<ProductoModel> listView, ArrayList<ProductoModel> carro) {
         String sql = "SELECT Productos.IDProducto, Productos.Imagen, Productos.Titulo, Productos.Autor, Productos.Genero, Productos.Año, Productos.Precio, Productos.Stock, Tipo.Nombre FROM Productos INNER JOIN Tipo ON Productos.IDTipo = Tipo.IDTipo WHERE UPPER(Titulo) LIKE UPPER('%"+busqueda+"%')";
         Statement stmt = null;
         try {
@@ -104,14 +105,14 @@ public class DAO {
                 InputStream s = b.getBinaryStream();
                 BufferedImage a = ImageIO.read(s);
                 producto.setImagen(SwingFXUtils.toFXImage(a,null));
-                System.out.println(a);
                 producto.setTitulo(rs.getString("Titulo"));
                 producto.setGenero(rs.getString("Genero"));
                 producto.setAutor(rs.getString("Autor"));
                 producto.setAño(rs.getInt("Año"));
+                producto.setStock(rs.getInt("Stock"));
                 producto.setPrecio(rs.getDouble("Precio"));
                 producto.setTipo(rs.getString("Nombre"));
-
+                producto.setCarrito(carro);
                 listView.add(producto);
             }
 

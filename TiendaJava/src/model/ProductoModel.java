@@ -16,13 +16,13 @@ public class ProductoModel {
     DoubleProperty Precio = new SimpleDoubleProperty();
     IntegerProperty Stock = new SimpleIntegerProperty();
     StringProperty Tipo = new SimpleStringProperty();
-    ArrayList<Object> carrito;
+    ArrayList<ProductoModel> carrito;
 
-    public ArrayList<Object> getCarrito() {
+    public ArrayList<ProductoModel> getCarrito() {
         return carrito;
     }
 
-    public void setCarrito(ArrayList<Object> carrito) {
+    public void setCarrito(ArrayList<ProductoModel> carrito) {
         this.carrito = carrito;
     }
 

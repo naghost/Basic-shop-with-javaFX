@@ -3,6 +3,7 @@ package view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -12,6 +13,7 @@ import model.ProductoModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -26,6 +28,8 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
     @FXML
     Label precio;
     @FXML
+    Label año;
+    @FXML
     Button boton;
 
     @FXML
@@ -33,6 +37,7 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     ProductoModel model;
 
+    ArrayList<ProductoModel> carro;
 
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
@@ -66,12 +71,29 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
         if (!empty && item != null && !item.equals(this.model)) {
             imagen.setImage(item.getImagen());
             titulo.textProperty().set(item.getTitulo());
-            autor.textProperty().set(item.getAutor());
-            precio.textProperty().set(String.valueOf(item.getPrecio()));
+            año.textProperty().set("Año: "+String.valueOf(item.getAño()));
+            autor.textProperty().set("de "+item.getAutor());
+            precio.textProperty().set("EUR "+String.valueOf(item.getPrecio()));
+            carro=item.getCarrito();
+            if (item.getStock()==0){
+                boton.setDisable(true);
+                boton.setText("Producto no disponible");
+            }
 
         }
         // keep a reference to the model item in the ListCell
         this.model = item;
     }
 
+    @FXML
+    public void añadirCarro(){
+        carro.add(model);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion");
+        alert.setHeaderText(null);
+        alert.setContentText("Producto añadido");
+
+        alert.showAndWait();
+
+    }
 }

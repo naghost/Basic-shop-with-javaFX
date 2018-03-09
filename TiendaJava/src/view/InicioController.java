@@ -54,8 +54,8 @@ public class InicioController {
             stage.setScene(new Scene(root1));
             stage.setTitle("MiguelZon - Busqueda: "+texto.getText());
             BusquedaController controller = (BusquedaController) fxmlLoader.getController();
-            controller.anadir(texto.getText());
             controller.setData(datos,carro);
+            controller.anadir(texto.getText());
             stage.show();
             Stage aqui = (Stage) salir.getScene().getWindow();
             aqui.close();

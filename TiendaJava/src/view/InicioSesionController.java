@@ -26,6 +26,8 @@ public class InicioSesionController {
 
     InicioController acontroller;
 
+    BusquedaController bcontroller;
+
     @FXML
     public void Iniciado(){
         datos = new UsuarioModel();
@@ -36,9 +38,15 @@ public class InicioSesionController {
         DAO dao = new DAO();
         dao.comprobarInicio(datos);
         if (datos.getNombre() != null){
+            if (acontroller != null) {
                 acontroller.sesionIniciada(datos);
-                Stage s  = (Stage) usuario.getScene().getWindow();
+                Stage s = (Stage) usuario.getScene().getWindow();
                 s.close();
+            }else{
+                bcontroller.sesionIniciada(datos);
+                Stage s = (Stage) usuario.getScene().getWindow();
+                s.close();
+            }
         }else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error inicio de sesion");
@@ -72,5 +80,9 @@ public class InicioSesionController {
 
     public void interfaz(InicioController inicioController) {
         this.acontroller=inicioController;
+    }
+
+    public void interfaz(BusquedaController busquedaController) {
+        this.bcontroller=busquedaController;
     }
 }
