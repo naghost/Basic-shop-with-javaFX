@@ -107,6 +107,8 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
             if (!newValue.equals("")) {
                 if (model.getStock() < Integer.parseInt(newValue)) {
                     Cantidad.setText(oldValue);
+                }else {
+                    model.setCantidad(Integer.parseInt(newValue));
                 }
             }
         }

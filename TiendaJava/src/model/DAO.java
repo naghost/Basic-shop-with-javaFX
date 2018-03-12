@@ -2,6 +2,7 @@ package model;
 
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
@@ -23,7 +24,7 @@ public class DAO {
         try {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost/Tienda",
-                    "root", "ta-088v3");
+                    "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -409,6 +410,74 @@ public class DAO {
             e.printStackTrace();
         }
 
+
+    }
+
+    public void comprarProductos(ObservableList<ProductoModel> productos, UsuarioModel usuario) {
+        String sql = "INSERT INTO Factura VALUES(NULL,?,?,?)";
+        PreparedStatement stmt =null;
+        int key = 0;
+        try{
+            stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+            stmt.setInt(2,usuario.getIDUsuario());
+            stmt.setInt(3, 1);
+            stmt.execute();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                 key = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        CallableStatement cStmt=null;
+        String query = "{CALL InsertarProducto(?,?,?,?,?)}";
+        int resultado=0;
+        try {
+            for (int i=0;i<productos.size();i++) {
+                cStmt = connection.prepareCall(query);
+                cStmt.setInt(1,productos.get(i).getId());
+                System.out.println(productos.get(i).getCantidad());
+                cStmt.setInt(2,productos.get(i).getCantidad());
+                cStmt.setDouble(3, productos.get(i).getPrecio());
+                cStmt.setInt(4,key);
+                cStmt.registerOutParameter(5, Types.INTEGER);
+                cStmt.execute();
+                resultado= cStmt.getInt(5);
+                if (resultado==0){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Alguien se te ha adelantado :(");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Lamentamos informarte que el producto "+productos.get(i).getTitulo()+" no esta actualmente diponible");
+                    alert.showAndWait();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (cStmt != null){
+                try {
+                    cStmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null){
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 }

@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import model.DAO;
 import model.ProductoModel;
 import model.UsuarioModel;
 
@@ -51,7 +53,31 @@ public class CarroController {
     }
 
     @FXML
-    public void comprar(){}
+    public void comprar(){
+        DAO dao = new DAO();
+        dao.comprarProductos(Productos, usuario);
+        Stage stage = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+        Parent root1= null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+            InicioController inicio = (InicioController) fxmlLoader.getController();
+            inicio.sesionIniciada(usuario);
+            Stage st =(Stage)Email.getScene().getWindow();
+            st.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("¡Compra realizada!");
+        alert.setHeaderText(null);
+        alert.setContentText("Compra realizada puedes consultar la factura en el area de cliente");
+        alert.showAndWait();
+    }
 
     @FXML
     public void atras(){

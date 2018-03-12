@@ -78,9 +78,13 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
             autor.textProperty().set("de "+item.getAutor());
             precio.textProperty().set("EUR "+String.valueOf(item.getPrecio()));
             carro=item.getCarrito();
+            System.out.println(item.getStock());
             if (item.getStock()==0){
                 boton.setDisable(true);
                 boton.setText("Producto no disponible");
+            }else {
+                boton.setDisable(false);
+                boton.setText("Comprar");
             }
             contador=item.getContador();
 
@@ -97,6 +101,8 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
                 existe=true;
                 if ((model.getCantidad()+1)<=model.getStock()) {
                     model.setCantidad(model.getCantidad() + 1);
+                    carro.get(i).setStock(model.getStock());
+                    carro.get(i).setPrecio(model.getPrecio());
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Informacion");
                     alert.setHeaderText(null);
