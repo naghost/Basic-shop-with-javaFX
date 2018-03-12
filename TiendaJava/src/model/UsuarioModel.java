@@ -1,5 +1,18 @@
 package model;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param IDUsuario Campo IDUsuario tabla Usuarios
+ * @param Nombre Campo Nombre tabla Usuarios
+ * @param Apellidos Campo Apellidos tabla Usuarios
+ * @param DNI Campo DNI tabla Usuarios
+ * @param Telefono Campo Telefono tabla Usuarios
+ * @param Direccion Campo Direccion tabla Usuarios
+ * @param Email Campo Email tabla Usuarios
+ * @param Password Campo Password tabla Usuarios
+ * @param Admin Campo Admin tabla Usuarios
+ */
 public class UsuarioModel {
 	Integer IDUsuario;
 	String Nombre;

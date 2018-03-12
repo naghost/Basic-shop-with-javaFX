@@ -21,6 +21,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param imagen Archivo de imagen
+ * @param Titulo Campo Titulo tabla Producto
+ * @param Autor Campo Autor tabla Producto
+ * @param Genero Campo Genero tabla Producto
+ * @param Año Campo Año tabla Producto
+ * @param Precio Campo Precio tabla Producto
+ * @param Stock Campo Stock tabla Producto
+ * @param tipo Campo IDTipo tabla Producto con asociacion Tipo
+ * @param ruta label que muestra la ruta del archivo
+ * @param carrito ArrayList que tiene los productos seleccionados del usuario
+ * @param usuario Usuario logueado
+ */
 
 public class EditarProductoController {
     @FXML
@@ -43,6 +58,13 @@ public class EditarProductoController {
     UsuarioModel usuario;
     ProductoModel producto;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param imagen Archivo de imagen
+     * @param fileChooser objeto que crea una interfaz para seleccionar archivos
+     */
+
     @FXML
     public void seleccionarImagen(){
         FileChooser fileChooser = new FileChooser();
@@ -53,6 +75,19 @@ public class EditarProductoController {
 
 
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param producto objeto con la informacion del producto que se va a editar
+     * @param Titulo Campo Titulo tabla Producto
+     * @param Autor Campo Autor tabla Producto
+     * @param Genero Campo Genero tabla Producto
+     * @param Año Campo Año tabla Producto
+     * @param Precio Campo Precio tabla Producto
+     * @param Stock Campo Stock tabla Producto
+     * @param tipo Campo IDTipo tabla Producto con asociacion Tipo
+     */
 
     public void datos(ProductoModel producto){
         this.producto=producto;
@@ -74,6 +109,29 @@ public class EditarProductoController {
                 break;
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param imagen Archivo de imagen
+     * @param Titulo Campo Titulo tabla Producto
+     * @param Autor Campo Autor tabla Producto
+     * @param Genero Campo Genero tabla Producto
+     * @param Año Campo Año tabla Producto
+     * @param Precio Campo Precio tabla Producto
+     * @param Stock Campo Stock tabla Producto
+     * @param tipo Campo IDTipo tabla Producto con asociacion Tipo
+     * @param ruta label que muestra la ruta del archivo
+     * @param carrito ArrayList que tiene los productos seleccionados del usuario
+     * @param usuario Usuario logueado
+     * @param anio @see @param Año
+     * @param precio @see @param Precio
+     * @param stock @see @param Stock
+     * @param fis @see @param imagen
+     * @param fileInputStream  @see @param imagen
+     * @param dao objeto que se encarga de las operaciones en la BBDD
+     * @param tip variable que define el tipo de producto que esç
+     */
     @FXML
     public void guardarDatos(){
         if (Titulo.getText().equals("") || Autor.getText().equals("") || Genero.getText().equals("") || Año.getText().equals("") || Precio.getText().equals("") || Stock.getText().equals("") || tipo.getValue() == null || imagen==null){
@@ -90,13 +148,8 @@ public class EditarProductoController {
                 anio = Integer.parseInt(Año.getText());
                 precio = Double.parseDouble(Precio.getText());
                 stock = Integer.parseInt(Stock.getText());
-
-
                 FileInputStream fis = new FileInputStream(imagen);
-
                 FileInputStream fileInputStream = new FileInputStream(imagen);
-
-
                 DAO dao = new DAO();
                 String tip = (String) tipo.getValue();
                 System.out.println(tipo.getValue());
@@ -112,7 +165,12 @@ public class EditarProductoController {
 
         }
     }
-
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param tipo Campo IDTipo tabla Producto con asociacion Tipo
+     * @param options lista con la que rellenamos la interfaz
+     */
     public void opciones(){
         ObservableList<String> options =
                 FXCollections.observableArrayList(

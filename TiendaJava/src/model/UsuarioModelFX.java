@@ -5,7 +5,21 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+/*
+ * Este modelo es exactamente igual que UsuarioModel pero adaptado para las listview y tableview de javafx
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param IDUsuario Campo IDUsuario tabla Usuarios
+ * @param Nombre Campo Nombre tabla Usuarios
+ * @param Apellidos Campo Apellidos tabla Usuarios
+ * @param DNI Campo DNI tabla Usuarios
+ * @param Telefono Campo Telefono tabla Usuarios
+ * @param Direccion Campo Direccion tabla Usuarios
+ * @param Email Campo Email tabla Usuarios
+ * @param Password Campo Password tabla Usuarios
+ * @param Admin Campo Admin tabla Usuarios
+ * @see UsuarioModel
+ */
 public class UsuarioModelFX {
     IntegerProperty IDUsuario;
     StringProperty Nombre;

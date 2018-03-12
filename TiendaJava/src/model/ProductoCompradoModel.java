@@ -2,6 +2,15 @@ package model;
 
 import javafx.beans.property.*;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param IDProducto IDProducto tabla FacturaProducto
+ * @param Nombre Nombre tabla FacturaProducto
+ * @param Cantidad Cantidad tabla FacturaProducto
+ * @param Precio Precio tabla FacturaProducto
+ *
+ */
 public class ProductoCompradoModel {
     IntegerProperty IDProducto;
     StringProperty Nombre;

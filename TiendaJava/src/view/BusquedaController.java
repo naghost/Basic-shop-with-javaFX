@@ -17,6 +17,25 @@ import model.UsuarioModel;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param nombre Label que tiene el nombre de usuario iniciado
+ * @param busqueda TextField que se utiliza para realizar busquedas de productos en la base de datos
+ * @param usuario ImageView que muestra el icono del area de usuarios
+ * @param carrito ImageView que muestra el icono del area de compras
+ * @param salir ImagenView que muestra el icono de volver atras en la interfaz
+ * @param buscar ImagenView que muestra el icono que hace de boton de busqueda
+ * @param admin ImagenView que muestra el icono del area de administracion
+ * @param listView Es una lista con los productos que se van a comprar
+ * @param cajaUsuario se utiliza para mostrar las opciones de usuario
+ * @param cajaBoton se utiliza para mostrar las opciones de iniciar sesion
+ * @param IniciarSesion boton que se utiliza para iniciar sesion
+ * @param contador label que lleva la cuenta de los articulos que hay en el carro
+ * @param Usuario datos del usuario que tiene la sesion iniciada
+ * @param productos lista observable controla los elementos mostrados en el listview
+ * @param carro lista con los productos que se van a comprar
+ */
 
 public class BusquedaController {
     @FXML
@@ -50,6 +69,13 @@ public class BusquedaController {
     
     ArrayList<ProductoModel> carro;
 
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param listView se le indica al lisview que tipo de controlador va a utilizar
+     * @return FilaProductoController.newInstance
+     */
     @FXML
     public void initialize(){
         listView.setCellFactory((lv) -> {
@@ -57,10 +83,28 @@ public class BusquedaController {
         });
 
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param busqueda TextField que se utiliza para realizar busquedas de productos en la base de datos
+     * @see anadir()
+     */
+
     @FXML
     public void actualizarBusqueda(){
         anadir(busqueda.getText());
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param a es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param b es una variable auxiliar que se utiliza para cerrar la interfaz
+     */
 
     @FXML
     public void mostrarCarrito(){
@@ -80,6 +124,17 @@ public class BusquedaController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param a es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param b es una variable auxiliar que se utiliza para cerrar la interfaz
+     */
+
     @FXML
     public void mostrarAdmin(){
         Stage stage = null;
@@ -98,6 +153,17 @@ public class BusquedaController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param a es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param b es una variable auxiliar que se utiliza para cerrar la interfaz
+     */
+
     @FXML
     public void mostrarUsuario(){
         Stage stage =null;
@@ -117,8 +183,19 @@ public class BusquedaController {
         }
     }
 
+
+
     @FXML
     public void salir(){}
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param inicio es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de la busqueda
+     */
 
     @FXML
     public void iniciarSesion(){
@@ -144,6 +221,17 @@ public class BusquedaController {
 
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param busqueda String que se utiliza para realizar busquedas de productos en la base de datos
+     * @param listView Es una lista con los productos que se van a comprar
+     * @param productos lista observable controla los elementos mostrados en el listview
+     * @param carro lista con los productos que se van a comprar
+     * @param contador label que lleva la cuenta de los articulos que hay en el carro
+     * @param Usuario datos del usuario que tiene la sesion iniciada
+     */
+
     public void anadir(String busqueda){
         productos = null;
         productos = FXCollections.observableArrayList();
@@ -155,6 +243,16 @@ public class BusquedaController {
         listView.refresh();
         System.out.println(carro.size());
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     *
+     * @param Usuario datos del usuario que tiene la sesion iniciada
+     * @param carro lista con los productos que se van a comprar
+     * @see ocultar()
+     * @see mostrar()
+     */
     
     public void setData(UsuarioModel usuario,ArrayList<ProductoModel> carro){
         this.carro=carro;
@@ -166,6 +264,19 @@ public class BusquedaController {
             mostrar();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param cajaBoton se utiliza para mostrar las opciones de iniciar sesion
+     * @param cajaUsuario se utiliza para mostrar las opciones de usuario
+     * @param usuario ImageView que muestra el icono del area de usuarios
+     * @param carrito ImageView que muestra el icono del area de compras
+     * @param salir ImagenView que muestra el icono de volver atras en la interfaz
+     * @param buscar ImagenView que muestra el icono que hace de boton de busqueda
+     * @param admin ImagenView que muestra el icono del area de administracion
+     * @param IniciarSesion boton que se utiliza para iniciar sesion
+     */
 
     private void ocultar() {
         cajaBoton.setMaxHeight(Double.MAX_VALUE);
@@ -188,6 +299,20 @@ public class BusquedaController {
         contador.setVisible(false);
         IniciarSesion.setVisible(true);
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param cajaBoton se utiliza para mostrar las opciones de iniciar sesion
+     * @param cajaUsuario se utiliza para mostrar las opciones de usuario
+     * @param usuario ImageView que muestra el icono del area de usuarios
+     * @param carrito ImageView que muestra el icono del area de compras
+     * @param salir ImagenView que muestra el icono de volver atras en la interfaz
+     * @param buscar ImagenView que muestra el icono que hace de boton de busqueda
+     * @param admin ImagenView que muestra el icono del area de administracion
+     * @param IniciarSesion boton que se utiliza para iniciar sesion
+     */
+
     private void mostrar(){
         cajaBoton.setMaxHeight(0);
         cajaBoton.setMaxWidth(0);
@@ -215,6 +340,14 @@ public class BusquedaController {
 
         nombre.setText(Usuario.getNombre());
     }
+
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param Usuario datos del usuario que tiene la sesion iniciada
+     * @see mostrar()
+     */
 
     public void sesionIniciada(UsuarioModel datos) {
         this.Usuario=datos;

@@ -7,6 +7,23 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param id Campo IDProducto tabla Producto
+ * @param Imagen Campo Imagen tabla Producto
+ * @param Titulo Campo Titulo tabla Producto
+ * @param Autor Campo Autor tabla Producto
+ * @param Genero Campo Genero tabla Producto
+ * @param Año Campo Año tabla Producto
+ * @param Precio Campo Precio tabla Producto
+ * @param Stock Campo Stock tabla Producto
+ * @param Tipo Campo IDTipo tabla Producto con asociacion Tipo
+ * @param cantidad se encarga de controlar la cantidad que hay en el carro de este producto
+ * @param carrito Lista que contiene los productos del usuario (es necesario pasarlos por aqui para que los tenga el controlador de la vista)
+ * @param contador es un label que aparece al lado de la imagen del carro que cuenta la cantidad de productos que se han añadido al carro
+ * @param usuario es el modelo del usuario iniciado
+ */
 public class ProductoModel {
     IntegerProperty id = new SimpleIntegerProperty();
     Image Imagen;

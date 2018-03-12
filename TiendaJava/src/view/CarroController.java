@@ -18,6 +18,21 @@ import model.UsuarioModel;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param Nombre Label que muestra nombre de usuario
+ * @param Apellido Label que muestra el apellido del usuario
+ * @param DNI Label que muestra el DNI del usuario
+ * @param Telefono Label que muestra el telefono del usuario
+ * @param Direccion Label que muestra la direccion del usuario
+ * @param Email Label que muestra el email del usuario
+ * @param Lista ListView con los productos del carrito
+ * @param Precio Label que muestra la suma total de la compra
+ * @param usuario Modelo del usuario iniciado
+ * @param carro Lista con los productos seleccionados por el usuario
+ * @param Productos Lista para asignarse al listview
+ */
 
 public class CarroController {
     @FXML
@@ -43,6 +58,12 @@ public class CarroController {
 
     ObservableList<ProductoModel> Productos;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param Lista se le indica al LisView que tipo de controlador va a utilizar
+     * @return FilaCarroController.newInstance()
+     */
 
     @FXML
     public void initialize(){
@@ -51,6 +72,18 @@ public class CarroController {
 
         });
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param dao objeto encargado de todas las acciones con la base de datos
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param inicio es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario
+     * @param st variable auxliar para cerrar la interfaz
+     * @param alert objeto que se usa para sacar ventanas emegentes
+     */
 
     @FXML
     public void comprar(){
@@ -79,6 +112,16 @@ public class CarroController {
         alert.showAndWait();
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param inicio es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y carrito
+     * @param st variable auxliar para cerrar la interfaz
+     */
+
     @FXML
     public void atras(){
         Stage stage = null;
@@ -101,6 +144,23 @@ public class CarroController {
         }
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param Nombre Label que muestra nombre de usuario
+     * @param Apellido Label que muestra el apellido del usuario
+     * @param DNI Label que muestra el DNI del usuario
+     * @param Telefono Label que muestra el telefono del usuario
+     * @param Direccion Label que muestra la direccion del usuario
+     * @param Email Label que muestra el email del usuario
+     * @param Lista ListView con los productos del carrito
+     * @param Precio Label que muestra la suma total de la compra
+     * @param usuario Modelo del usuario iniciado
+     * @param carro Lista con los productos seleccionados por el usuario
+     * @param Productos Lista para asignarse al listview
+     * @see Sumatotal()
+     */
+
     public void llenar(ArrayList<ProductoModel> carro, UsuarioModel usuario){
         this.carro= carro;
         this.usuario = usuario;
@@ -115,6 +175,14 @@ public class CarroController {
         SumaTotal();
 
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param carro Lista con los productos seleccionados por el usuario
+     * @param Contador variable para mostrar todos los precios
+     * @param Precio Label que muestra la suma total de la compra
+     */
 
     public void SumaTotal(){
         Double Contador = 0.0;

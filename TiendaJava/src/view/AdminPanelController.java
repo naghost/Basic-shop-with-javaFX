@@ -12,6 +12,14 @@ import model.UsuarioModel;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param Imagen se utiliza para poder cerrar la interfaz
+ * @param carrito se utiliza para guardar el carro del usuario
+ * @param usuario es el usuario registrado
+ */
+
 public class AdminPanelController {
     @FXML
     ImageView imagen;
@@ -19,6 +27,16 @@ public class AdminPanelController {
     ArrayList<ProductoModel> carrito;
 
     UsuarioModel usuario;
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param a es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param b es una variable auxiliar que se utiliza para cerrar la interfaz
+     */
 
     @FXML
     public void Productos(){
@@ -40,6 +58,15 @@ public class AdminPanelController {
         }
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param usr es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario
+     */
+
     @FXML
     public void Usuarios(){
         Stage stage = null;
@@ -58,6 +85,16 @@ public class AdminPanelController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param inicio es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param st es una variable auxiliar que se utiliza para cerrar la interfaz
+     */
 
     @FXML
     public void Atras(){
@@ -80,6 +117,13 @@ public class AdminPanelController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param carrito ArrayList que contiene los productos en una lista
+     * @param usuario Modelo del usuario que esta iniciado
+     */
 
     public void RecogerDatos(ArrayList<ProductoModel> carrito, UsuarioModel usuario){
 

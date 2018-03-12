@@ -564,6 +564,14 @@ public class DAO {
      * @author Miguel Angel Hernandez Rodriguez
      * @version 1.0
      * @param productos lista de productos
+     * @param usuario usuario que realiza la compra
+     * @param sql sentencia sql
+     * @param stmt ejecuta consultas sql
+     * @param rs recoge la ID insertada
+     * @param cStmt ejecuta los procedure de mysql
+     * @param resultado se utliza para saber si el usuario ha podido realizar la compra
+     * @param alert se utiliza para mostrar mensajes emegentes al usuario
+     * @param connection objeto encargado de establecer la conexion con mysql
      */
     public void comprarProductos(ObservableList<ProductoModel> productos, UsuarioModel usuario) {
         String sql = "INSERT INTO Factura VALUES(NULL,?,?,?)";
@@ -632,7 +640,14 @@ public class DAO {
         }
 
     }
-
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param producto modelo del producto que se va a eliminar
+     * @param sql contiene la sentencia sql
+     * @param stmt ejecuta las sentencias sql
+     * @param connection se encarga de la conexion con la base de datos
+     */
     public void eliminarProducto(ProductoModel producto) {
         String sql = "DELETE FROM Productos WHERE IDProducto=?";
         PreparedStatement stmt = null;
@@ -660,6 +675,23 @@ public class DAO {
             }
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param titulo Titulo del producto
+     * @param autor Autor del producto
+     * @param genero Genero del producto
+     * @param anio Año de lanzamiento del producto
+     * @param precio Precio del producto
+     * @param stock Stock del producto
+     * @param tip contiene el tipo de producto que es
+     * @param fileInputStream  contiene la imagen del producto
+     * @param producto contiene el modelo del producto que hay que modificar
+     * @param sql contiene la sentencia sql
+     * @param stmt ejecuta las sentencias sql
+     * @param connection controla la conexion con mysql
+     */
 
     public void EditarProducto(String titulo, String autor, String genero, int anio, double precio, int stock, String tip, FileInputStream fileInputStream, ProductoModel producto) {
         String sql = "UPDATE Productos SET Imagen=?, Titulo=?, Autor=?, Genero=?, Año=?, Precio=?, Stock=?, IDTipo=? WHERE IDProducto =?";
@@ -707,6 +739,14 @@ public class DAO {
         }
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param usuario modelo del usuario que se tiene que editar
+     * @param sql contiene la sentencia sql
+     * @param stmt ejecuta la sentencia sql
+     * @param connection controla la conexion con mysql
+     */
     public void editarPersona(UsuarioModel usuario) {
         String sql = "UPDATE Usuario SET Nombre=?, Apellidos=?, DNI=?, Telefono=?, Direccion=?, Email=?, Password=? WHERE IDUsuario=?";
         PreparedStatement stmt = null;

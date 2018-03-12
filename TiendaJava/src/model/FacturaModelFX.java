@@ -5,6 +5,14 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param IDFactura campo IDFactura tabla CompraFactura
+ * @param fechaHora campo Fecha-Hora tabla CompraFactura
+ * @param Usuario  campo IDUsuario tabla CompraFactura con union con tabla Usuario
+ * @param Estado campo Estado tabla CompraFactura con union con tabla Estado
+ */
 public class FacturaModelFX {
     IntegerProperty IDFactura;
     StringProperty fechaHora;
@@ -41,7 +49,6 @@ public class FacturaModelFX {
     public void setFechaHora(String fechaHora) {
         this.fechaHora.set(fechaHora);
     }
-
 
     public String getEstado() {
         return Estado.get();
