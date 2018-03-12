@@ -3,12 +3,15 @@ package view;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.ProductoModel;
 
 import java.io.IOException;
@@ -31,7 +34,6 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
     Label año;
     @FXML
     Button boton;
-
     @FXML
     AnchorPane root;
 
@@ -59,6 +61,18 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
     @FXML
     public void mostrarProducto(){
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MostrarProducto.fxml"));
+            Parent root1= null;
+            root1 = (Parent)fxmlLoader.load();
+            Stage stage= new Stage();
+            stage.setScene(new Scene(root1));
+            MostrarProductoController a = (MostrarProductoController) fxmlLoader.getController();
+            a.rellenarDatos(model,carro);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -18,6 +18,20 @@ public class ProductoModel {
     IntegerProperty Stock = new SimpleIntegerProperty();
     StringProperty Tipo = new SimpleStringProperty();
     IntegerProperty cantidad = new SimpleIntegerProperty(1);
+    StringProperty Descripcion = new SimpleStringProperty();
+    ArrayList<ProductoModel> carrito;
+    Label contador;
+    UsuarioModel usuario;
+
+    public UsuarioModel getUsuario() { return usuario; }
+
+    public void setUsuario(UsuarioModel usuario) { this.usuario = usuario; }
+
+    public String getDescripcion() { return Descripcion.get(); }
+
+    public StringProperty descripcionProperty() { return Descripcion; }
+
+    public void setDescripcion(String descripcion) { this.Descripcion.set(descripcion); }
 
     public int getCantidad() {
         return cantidad.get();
@@ -30,9 +44,6 @@ public class ProductoModel {
     public void setCantidad(int cantidad) {
         this.cantidad.set(cantidad);
     }
-
-    ArrayList<ProductoModel> carrito;
-    Label contador;
 
     public Label getContador() {
         return contador;

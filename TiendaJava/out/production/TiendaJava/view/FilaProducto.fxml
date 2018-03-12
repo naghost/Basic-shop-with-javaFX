@@ -19,12 +19,12 @@
    <children>
       <HBox fillHeight="false" layoutX="100.0" prefHeight="218.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="imagen" fitHeight="218.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagen" fitHeight="218.0" fitWidth="218.0" onMouseClicked="#mostrarProducto" pickOnBounds="true" preserveRatio="true" />
             <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="199.0" prefWidth="190.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" prefHeight="23.0">
                      <children>
-                        <Label fx:id="titulo" text="En el viento tohet" textFill="#0a64ff" HBox.hgrow="ALWAYS">
+                        <Label fx:id="titulo" onMouseClicked="#mostrarProducto" text="En el viento tohet" textFill="#0a64ff" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="22.0" />
                            </font>

@@ -13,11 +13,22 @@ import java.io.IOException;
 
 import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
+/*
+* @author Miguel Angel Hernandez Rodriguez
+* @version 1.0
+* @param primaryStage es el primer escenario para ejecutar la aplicacion
+* @param rootLayout Layout que va a servir de modelo para la primera interfaz
+*/
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
-    @Override
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param primaryStage es el primer escenario para ejecutar la aplicacion
+     * @param rootLayout Layout que va a servir de modelo para la primera interfaz
+     */
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MiguelZon");
@@ -26,6 +37,13 @@ public class Main extends Application {
 
         showPersonOverview();
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param loader se encarga de iniciar las interfaces de FXML
+     * @param rootLayout cargamos el escenario
+     */
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
@@ -42,8 +60,14 @@ public class Main extends Application {
         }
     }
 
-    /**
-     * Shows the person overview inside the root layout.
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param loader carga la interfaz de Inicio
+     * @param personOverview carga la interfaz Inicio
+     * @param rootLayout introducimos en la posicion central la interfaz cargada en personOverView
+     * @see Inicio.fxml
+     * @see InicioController.fxml
      */
     public void showPersonOverview() {
         try {

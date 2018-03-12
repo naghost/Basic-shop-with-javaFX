@@ -24,7 +24,24 @@ public class UsuarioPaneController {
 
     @FXML
     public void editarPerfil(){
+        UsuarioModelFX u = new UsuarioModelFX(usuario);
 
+        Stage stage = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditarUsuario.fxml"));
+        Parent root1= null;
+        try {
+            root1 = (Parent) fxmlLoader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root1));
+            EditarUsuarioController usr =(EditarUsuarioController) fxmlLoader.getController();
+            usr.datos(usuario);
+
+            stage.show();
+
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

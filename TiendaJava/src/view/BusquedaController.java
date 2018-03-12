@@ -149,7 +149,7 @@ public class BusquedaController {
         productos = FXCollections.observableArrayList();
 
         DAO dao = new DAO();
-        productos = dao.buscar(busqueda, productos, carro, contador);
+        productos = dao.buscar(busqueda, productos, carro, contador, Usuario);
         listView.getItems().clear();
         listView.setItems(productos);
         listView.refresh();
