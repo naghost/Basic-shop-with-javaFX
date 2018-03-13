@@ -15,6 +15,24 @@ import model.UsuarioModel;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * Rellena los datos
+ * @param texto Textfield que contiene el campo con el que vamos a hacer la busqueda
+ * @param Nombre Label que muestra el usuario conectado
+ * @param boton utilizado para llamar a interfaz de iniciar sesion
+ * @param usuario Imagenview utilizado como icono que muestra el area de usuario
+ * @param carrito Imagenview utilizado como icono que muestra el area de carrito
+ * @param salir Imagenview utilizado para salir
+ * @param admin Imagen view utilizado como icono que muestra el area de administracion
+ * @param imagenes contenedor de las imagenes que se mostrara o no segun si esta el usuario coenctado o no
+ * @param contador contador de los productos en el carrito
+ * @param stage escenario que se utiliza para cargar interfaces
+ * @param datos modelo del usuario iniciado
+ * @param carro ArrayList con los productos
+ *
+ */
 
 public class InicioController {
     @FXML
@@ -43,6 +61,16 @@ public class InicioController {
     ArrayList<ProductoModel> carro = new ArrayList<>();
 
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param controller controlador de la interfaz que se va a abrir para pasarle datos
+     * @param aqui variable auxiliar para cerrar
+     * @param alert objeto que se utiliza para mostrar mensajes emegentes
+     */
     @FXML
     public void buscar(){
         if(!texto.getText().equals("")) {
@@ -76,6 +104,15 @@ public class InicioController {
 
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param inicio controlador de la interfaz que se va a abrir para pasarle datos
+     */
+
     @FXML
     public void iniciar(){
         String resultado="";
@@ -98,6 +135,16 @@ public class InicioController {
 
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param a controlador de la interfaz que se va a abrir para pasarle datos
+     * @param b variable auxiliar para cerrar la interfaz
+     */
+
     @FXML
     public void Administrador(){
         try {
@@ -115,15 +162,18 @@ public class InicioController {
             e.printStackTrace();
         }
     }
-
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param usuario Arralist con los elementos del carro
+     */
     public void añadirCarro(ArrayList<ProductoModel> usuario){
         this.carro=usuario;
         this.contador.setText(String.valueOf(this.carro.size()));
     }
 
     public void sesionIniciada(UsuarioModel datos) {
-
-
         this.datos = datos;
         Nombre.setText("Bienvenido "+datos.getNombre());
         boton.setVisible(false);
@@ -144,6 +194,16 @@ public class InicioController {
         }
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param a controlador de la interfaz que se va a abrir para pasarle datos
+     * @param b variable auxiliar para cerrar la interfaz
+     */
+
     @FXML
     public void panelUsuario(){
         try {
@@ -161,6 +221,13 @@ public class InicioController {
             e.printStackTrace();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param a variable auxiliar en la que se recoge la interaz para cerrarla
+     */
 
     @FXML
     public void Salir(){

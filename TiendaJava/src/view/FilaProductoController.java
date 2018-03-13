@@ -20,7 +20,25 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * Rellena los datos
+ * @param empty booleano encargado de mostrar si el objeto esta vacio
+ * @param imagen Archivo de imagen
+ * @param titulo Campo Titulo tabla Producto
+ * @param autor Campo Autor tabla Producto
+ * @param año Campo Año tabla Producto
+ * @param precio Campo Precio tabla Producto
+ * @param boton Button que utiliza para añadir producto
+ * @param root se utiliza para obtener el nodo principal del archivo FXML
+ * @param model es el modelo en el que se basa la vista
+ * @param carro es el carrito del usuario
+ * @param contador es la variable que cambia si añades mas productos
+ * @param LOG variable utilizada para mostrar excepciones
+ *
+ *
+ */
 public class FilaProductoController extends ListCell<ProductoModel> implements Initializable {
     @FXML
     ImageView imagen;
@@ -46,6 +64,12 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param loader se encarga de ejecutar una instancia de cada archivo FXML
+     */
     public static FilaProductoController newInstance(){
         FXMLLoader loader = new FXMLLoader(FilaProductoController.class.getResource("FilaProducto.fxml"));
 
@@ -58,6 +82,16 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
 
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param stage Escenario en el que se mostrara la interfaz
+     * @param fxmlLoader Carga las interfaces escritas en los archivos FXML
+     * @param root1 Recoge el nodo primario de la interfaz escrita en el archivo FXML
+     * @param inicio es una variable auxiliar que sirve para llamar al controlador de la interfaz y pasarle los datos de usuario y el carrito
+     * @param a es una variable auxiliar que se utiliza para enviar los parametros del modelo que se mostrara en la itneraz y del carro del usuario
+     *
+     */
     @FXML
     public void mostrarProducto(){
 
@@ -74,12 +108,36 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
             e.printStackTrace();
         }
     }
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     *  asigna la interfaz al controlador
+     */
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     setGraphic(root);
     }
 
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param empty booleano encargado de mostrar si el objeto esta vacio
+     * @param imagen Archivo de imagen
+     * @param titulo Campo Titulo tabla Producto
+     * @param autor Campo Autor tabla Producto
+     * @param año Campo Año tabla Producto
+     * @param precio Campo Precio tabla Producto
+     * @param boton Button que utiliza para añadir producto
+     * @param root se utiliza para obtener el nodo principal del archivo FXML
+     * @param model es el modelo en el que se basa la vista
+     * @param carro es el carrito del usuario
+     * @param contador es la variable que cambia si añades mas productos
+     *
+     *
+     */
     protected void updateItem(ProductoModel item, boolean empty) {
         super.updateItem(item, empty); // <-- Important
         // make empty cell items invisible
@@ -92,7 +150,6 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
             autor.textProperty().set("de "+item.getAutor());
             precio.textProperty().set("EUR "+String.valueOf(item.getPrecio()));
             carro=item.getCarrito();
-            System.out.println(item.getStock());
             if (item.getStock()==0){
                 boton.setDisable(true);
                 boton.setText("Producto no disponible");
@@ -107,6 +164,24 @@ public class FilaProductoController extends ListCell<ProductoModel> implements I
         this.model = item;
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param empty booleano encargado de mostrar si el objeto esta vacio
+     * @param imagen Archivo de imagen
+     * @param titulo Campo Titulo tabla Producto
+     * @param autor Campo Autor tabla Producto
+     * @param año Campo Año tabla Producto
+     * @param precio Campo Precio tabla Producto
+     * @param boton Button que utiliza para añadir producto
+     * @param root se utiliza para obtener el nodo principal del archivo FXML
+     * @param model es el modelo en el que se basa la vista
+     * @param carro es el carrito del usuario
+     * @param contador es la variable que cambia si añades mas productos
+     * @param alert objeto que se encarga de mostrar mensajes emergentes
+     *
+     */
     @FXML
     public void añadirCarro(){
         boolean existe = false;

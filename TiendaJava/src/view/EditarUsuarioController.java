@@ -7,8 +7,18 @@ import javafx.stage.Stage;
 import model.DAO;
 import model.UsuarioModel;
 
-/**
- *
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param usuario es la sesiond el usuario activo(y que se va a modificar)
+ * @param nombre Textfield con el contenido del nombre del usuario que se modificara
+ * @param apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+ * @param dni Textfield con el contenido del DNI del usuario que se modificara
+ * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+ * @param Direccion Textfield con el contenido de la del usuario que se modificara
+ * @param email Textfield con el contenido del email del usuario que se modificara
+ * @param password Textfield con el contenido de la contraseña del usuario que se modificara
+ * @param repassword TextField con el contenido de la contraseña que se comprobara que sea correcta
  */
 
 public class EditarUsuarioController {
@@ -30,11 +40,26 @@ public class EditarUsuarioController {
     @FXML
     TextField repassword;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param usuario es la sesiond el usuario activo(y que se va a modificar)
+     * @param nombre Textfield con el contenido del nombre del usuario que se modificara
+     * @param apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+     * @param dni Textfield con el contenido del DNI del usuario que se modificara
+     * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+     * @param Direccion Textfield con el contenido de la del usuario que se modificara
+     * @param email Textfield con el contenido del email del usuario que se modificara
+     * @param password Textfield con el contenido de la contraseña del usuario que se modificara
+     * @param repassword TextField con el contenido de la contraseña que se comprobara que sea correcta
+     * @param fallo cadena de texto que contiene la informacion de los posibles errores
+     * @param error contador de errores
+     * @param Tel variable auxiliar para pasar el telefono
+     * @param alert objeto para mostrar cuadros emegerntes de javaFX
+     * @param stage1 variable que recoge el escenario para cerrarlo
+     * @param dao objeto que se encarga de realizar las consultaas a la base de datos
+     */
 
-
-    InicioSesionController inicioSesionController;
-
-    InicioController inicioController;
     @FXML
     public void comprobar(){
         String fallo ="";
@@ -106,6 +131,20 @@ public class EditarUsuarioController {
             stage1.close();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param usuario es la sesiond el usuario activo(y que se va a modificar)
+     * @param nombre Textfield con el contenido del nombre del usuario que se modificara
+     * @param apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+     * @param dni Textfield con el contenido del DNI del usuario que se modificara
+     * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+     * @param Direccion Textfield con el contenido de la del usuario que se modificara
+     * @param email Textfield con el contenido del email del usuario que se modificara
+     * @param password Textfield con el contenido de la contraseña del usuario que se modificara
+     * @param repassword TextField con el contenido de la contraseña que se comprobara que sea correcta
+     */
 
     public void datos(UsuarioModel usuario){
         this.usuario=usuario;

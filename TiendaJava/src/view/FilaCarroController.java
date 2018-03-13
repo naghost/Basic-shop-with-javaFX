@@ -21,6 +21,25 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param imagen Archivo de imagen
+ * @param Titulo Campo Titulo tabla Producto
+ * @param Autor Campo Autor tabla Producto
+ * @param Año Campo Año tabla Producto
+ * @param Precio Campo Precio tabla Producto
+ * @param Cantidad cantidad del producto que se va a comprar
+ * @param root variable que se utiliza para coger todo el elemento
+ * @param model modelo del producto que se esta mostrando
+ * @param carro carro del usuario para añadir o modificarlo
+ * @param contador label que muestra la cantidad de produtos al usuario
+ * @param productos lista de productos mostrados
+ * @param listView lista de productos
+ * @param LOG se utliza apra mostrar las excepciones
+ *
+ */
+
 public class FilaCarroController extends ListCell<ProductoModel> implements Initializable, ChangeListener<String> {
 
     @FXML
@@ -51,6 +70,12 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
 
     private static final Logger LOG = Logger.getLogger(FilaProductoController.class.getName());
 
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param loader se encarga de ejecutar una instancia de cada archivo FXML
+     */
     public static FilaCarroController newInstance(){
         FXMLLoader loader = new FXMLLoader(FilaProductoController.class.getResource("FilaCarro.fxml"));
 
@@ -63,21 +88,36 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
 
     }
 
-    @FXML
-    public void mostrarProducto(){
-
-    }
-
-    @FXML
-    public void eliminarProducto(){
-
-    }
-
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     *  asigna la interfaz al controlador
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setGraphic(root);
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param empty booleano encargado de mostrar si el objeto esta vacio
+     * @param imagen Archivo de imagen
+     * @param Titulo Campo Titulo tabla Producto
+     * @param Autor Campo Autor tabla Producto
+     * @param Año Campo Año tabla Producto
+     * @param Precio Campo Precio tabla Producto
+     * @param Cantidad cantidad del producto que se va a comprar
+     * @param root variable que se utiliza para coger todo el elemento
+     * @param model modelo del producto que se esta mostrando
+     * @param carro carro del usuario para añadir o modificarlo
+     * @param contador label que muestra la cantidad de produtos al usuario
+     * @param productos lista de productos mostrados
+     * @param listView lista de productos
+     * @param LOG se utliza apra mostrar las excepciones
+     *
+     */
     protected void updateItem(ProductoModel item, boolean empty) {
         super.updateItem(item, empty); // <-- Important
         // make empty cell items invisible
@@ -98,6 +138,17 @@ public class FilaCarroController extends ListCell<ProductoModel> implements Init
 
 
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param Cantidad cantidad del producto que se va a comprar
+     * @param model modelo del producto que se esta mostrando
+     * @param observable posicion del la lista
+     * @param oldValue valor antiguo
+     * @param newValue nuevo valor
+     */
 
     @Override
     public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {

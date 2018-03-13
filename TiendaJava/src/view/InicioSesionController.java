@@ -14,6 +14,20 @@ import model.UsuarioModel;
 
 import java.io.IOException;
 
+
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * Rellena los datos
+ * @param Iniciado variable que se encarga de verificar si se ha iniciado sesion
+ * @param usuario TextField que va a recoger los datos de usuario
+ * @param passwordField Textfield que va a recoger los datos de usuario
+ * @param datos modelo de datos que va a rellenar el usuario
+ * @param acontroller controlador de la interfaz inicial
+ * @para bcontroller controlador de la interfaz de busqueda
+ *
+ */
+
 public class InicioSesionController {
 
     boolean Iniciado=false;
@@ -28,10 +42,18 @@ public class InicioSesionController {
 
     BusquedaController bcontroller;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param dao objeto que se encarga de las consultas en la base de datos
+     * @param s variable auxiliar para recoger la interfaz y cerrarla
+     * @param alert objeto que se utiliza para mostrar mensajes emegentes
+     */
+
     @FXML
     public void Iniciado(){
         datos = new UsuarioModel();
-        System.out.println(this.usuario.getText());
         datos.setEmail(this.usuario.getText());
         datos.setPassword(this.passwordField.getText());
 
@@ -56,6 +78,17 @@ public class InicioSesionController {
             alert.showAndWait();
         }
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param controller controlador de la interfaz que se va a abrir para pasarle datos
+     * @param Incio variable auxiliar para recoger el controlador de la ventana y pasarle el controlador de la actual ventana
+     */
+
     @FXML
     public void Registrar(){
 
@@ -67,8 +100,6 @@ public class InicioSesionController {
             root1 = (Parent)fxmlLoader.load();
             stage= new Stage();
             stage.setScene(new Scene(root1,usuario.getScene().getWidth(),usuario.getScene().getHeight()));
-
-
             stage.setTitle("MiguelZon - Registrar usuario");
             RegistrarUsuarioController inicio = (RegistrarUsuarioController) fxmlLoader.getController();
             inicio.interfaz(this, acontroller);

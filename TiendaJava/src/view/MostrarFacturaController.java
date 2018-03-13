@@ -11,6 +11,28 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.NumberStringConverter;
 import model.*;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param Nombre Textfield con el contenido del nombre del usuario que se modificara
+ * @param Apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+ * @param DNI Textfield con el contenido del DNI del usuario que se modificara
+ * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+ * @param Direccion Textfield con el contenido de la del usuario que se modificara
+ * @param Email Textfield con el contenido del email del usuario que se modificara
+ * @param Numero numero de factura
+ * @param FechaHora Fecha y hora de la factura
+ * @param Estado Estado de la factura
+ * @param tabla es la tabla que se muestra
+ * @param NombreProducto columna con el nombre del producto
+ * @param Cantidad columna que muestra la cantidad de ese producto que he comprado
+ * @param Precio columna que muestra el precio al que se ha comprado el producto
+ * @param Usuario modelo del usuario que se esta mostrando
+ * @param Factura  modelo de la factura que se esta mostrando
+ * @param UsuarioActual modelo del usuario que se esta mostrando ahora mismo
+ */
+
+
 public class MostrarFacturaController {
 
     ObservableList<ProductoCompradoModel> lista = FXCollections.observableArrayList();
@@ -47,6 +69,12 @@ public class MostrarFacturaController {
 
     UsuarioModel UsuarioActual;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * este metodo asigna a cada columna su dato
+     */
+
     @FXML
     public void initialize(){
     NombreProducto.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
@@ -54,6 +82,17 @@ public class MostrarFacturaController {
     Precio.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
     }
 
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param event elemento seleccionado de la tabla
+     * @param oValue valor anterior de la tabla
+     * @param nValue valor anterior de la tabla
+     * @param error objeto que utilizo para mostrar datos en FXML
+     * @param dao objeto encargado de realizar las consultas
+     * @param producto modelo del producto seleccionado
+     */
     @FXML
     public void devolucion(TableColumn.CellEditEvent<ProductoCompradoModel, Number> event){
         int oValue = event.getOldValue().intValue();
@@ -65,7 +104,6 @@ public class MostrarFacturaController {
             Alert error = new Alert(Alert.AlertType.ERROR);
             error.setContentText("El valor nuevo no puede ser mayor que el nuevo");
             error.show();
-
         }else {
             DAO dao = new DAO();
             producto.setCantidad(nValue);
