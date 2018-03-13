@@ -20,6 +20,22 @@ import model.UsuarioModelFX;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param usuario es la sesiond el usuario activo(y que se va a modificar)
+ * @param Nombre Textfield con el contenido del nombre del usuario que se modificara
+ * @param Apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+ * @param DNI Textfield con el contenido del DNI del usuario que se modificara
+ * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+ * @param Direccion Textfield con el contenido de la del usuario que se modificara
+ * @param Email Textfield con el contenido del email del usuario que se modificara
+ * @param Password Textfield con el contenido de la contraseña del usuario que se modificara
+ * @param Admin campo que identifica como si el usuario es administrador
+ * @param inicioController controlador de la interfaz inicial
+ * @param comboBox tiene un comboBox para filtrar las busquedas
+ *
+ */
 
 public class UsuariosController {
 

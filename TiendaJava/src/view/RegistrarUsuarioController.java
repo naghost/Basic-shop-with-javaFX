@@ -52,7 +52,6 @@ public class RegistrarUsuarioController {
      * @param error integer para contar los fallos
      * @param Tel variable auxliar para convertir el telefono
      * @param alert objeto que muestra mensajes emergentes
-     * @param
      */
 
     @FXML
