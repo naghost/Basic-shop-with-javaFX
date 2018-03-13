@@ -80,7 +80,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fx:id="salir" fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                        <ImageView fx:id="salir" fitHeight="30.0" fitWidth="25.0" onMouseClicked="#Salir" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                            <image>
                               <Image url="@../Recursos/img/salir.png" />
                            </image>

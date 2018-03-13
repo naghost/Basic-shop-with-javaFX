@@ -12,6 +12,28 @@ import model.*;
 
 import java.io.IOException;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * Rellena los datos
+ * @param lista lista con los usuarios que se van a mostrar
+ * @param tabla tabla que mostrara los datos
+ * @param Numero numero de la factura
+ * @param FechaHora fecha de la factura
+ * @param Usuario que realizo la compra
+ * @param Estado estado del pedido
+ * @param comboBox comboBox de la interfaz para seleccionar filtros
+ * @param buscar Textfield para buscar en la interfaz
+ * @param Nombre Label con el nombre de usuario
+ * @param Apellidos Label con el apellido del usuario
+ * @param Direccion Label con la direccion del usuario;
+ * @param DNI Label con el dni del usuario;
+ * @param Telefono Label con telefono del usuario
+ * @param Email Label con el email del usuario
+ * @param consulta modelo con el usuario del que se consult
+ * @param usuario modelo con el usuario conectado
+ */
+
 public class MostrarUsuarioController {
 
     ObservableList<FacturaModelFX> lista = FXCollections.observableArrayList();
@@ -54,6 +76,15 @@ public class MostrarUsuarioController {
         Estado.setCellValueFactory(cellData -> cellData.getValue().estadoProperty());
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param f controlador de la interfaz que se va a abrir para pasarle datos
+     */
+
     @FXML
     public void Mostrar(){
         FacturaModelFX seleccion = tabla.getSelectionModel().getSelectedItem();
@@ -75,9 +106,7 @@ public class MostrarUsuarioController {
         }
     }
 
-    private void Edicion() {
 
-    }
 
     private void NoEditar() {
         tabla.setEditable(false);
@@ -86,6 +115,13 @@ public class MostrarUsuarioController {
         Usuario.setEditable(false);
         Estado.setEditable(false);
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param dao objeto que realiza operaciones con la base de datos
+     */
 
     public void rellenarLista(){
         DAO dao= new DAO();
@@ -97,6 +133,14 @@ public class MostrarUsuarioController {
 
         this.usuario = usuario;
     }
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param usuario usuario que esta actualizando el programa
+     * @param seleccion usuario seleccionado
+     */
 
     public void setUsuario(UsuarioModel usuario, UsuarioModelFX seleccion) {
         this.usuario=usuario;

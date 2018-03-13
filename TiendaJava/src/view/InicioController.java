@@ -236,4 +236,22 @@ public class InicioController {
 
 
     }
+    @FXML
+    public void mostrarCarrito(){
+        Stage stage = null;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Carro.fxml"));
+            Parent root1= null;
+            root1 = (Parent)fxmlLoader.load();
+            stage= new Stage();
+            stage.setScene(new Scene(root1));
+            CarroController a = (CarroController) fxmlLoader.getController();
+            a.llenar(carro,datos);
+            stage.show();
+            Stage b = (Stage) admin.getScene().getWindow();
+            b.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

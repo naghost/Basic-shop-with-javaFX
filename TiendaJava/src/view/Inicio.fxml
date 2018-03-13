@@ -90,7 +90,7 @@
                            </HBox.margin>
                         </ImageView>
                         <Label fx:id="contador" text="0" textFill="RED" />
-                        <ImageView fx:id="carrito" fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="carrito" fitHeight="150.0" fitWidth="50.0" onMouseClicked="#mostrarCarrito" pickOnBounds="true" preserveRatio="true" visible="false">
                            <image>
                               <Image url="@../Recursos/img/carro.png" />
                            </image>

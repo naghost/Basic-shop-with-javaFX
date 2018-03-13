@@ -7,6 +7,22 @@ import javafx.stage.Stage;
 import model.DAO;
 import model.UsuarioModel;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param usuario es la sesiond el usuario activo(y que se va a modificar)
+ * @param nombre Textfield con el contenido del nombre del usuario que se modificara
+ * @param apellidos Textfield con el contenido de los apellidos del usuario que se modificara
+ * @param dni Textfield con el contenido del DNI del usuario que se modificara
+ * @param Telefono Textfield con el contenido del telefono del usuario que se modificara
+ * @param Direccion Textfield con el contenido de la del usuario que se modificara
+ * @param email Textfield con el contenido del email del usuario que se modificara
+ * @param password Textfield con el contenido de la contraseña del usuario que se modificara
+ * @param repassword TextField con el contenido de la contraseña que se comprobara que sea correcta
+ * @param inicioSesionController controlador de la interfaz inicio sesion
+ * @param inicioController controlador de la interfaz inicial
+ */
+
 public class RegistrarUsuarioController {
     UsuarioModel usuario;
     @FXML
@@ -29,6 +45,16 @@ public class RegistrarUsuarioController {
     InicioSesionController inicioSesionController;
 
     InicioController inicioController;
+
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * @param error integer para contar los fallos
+     * @param Tel variable auxliar para convertir el telefono
+     * @param alert objeto que muestra mensajes emergentes
+     * @param
+     */
+
     @FXML
     public void comprobar(){
         String fallo ="";
@@ -101,8 +127,9 @@ public class RegistrarUsuarioController {
             Stage stage1= (Stage) nombre.getScene().getWindow();
             stage1.close();
             stage.close();
-
-            inicioController.sesionIniciada(usuario);
+            if(inicioController!=null) {
+                inicioController.sesionIniciada(usuario);
+            }
         }
     }
 

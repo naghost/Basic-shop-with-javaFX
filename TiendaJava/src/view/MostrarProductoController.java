@@ -16,6 +16,24 @@ import model.UsuarioModel;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*
+ * @author Miguel Angel Hernandez Rodriguez
+ * @version 1.0
+ * @param imagen Archivo de imagen
+ * @param Titulo Campo Titulo tabla Producto
+ * @param Autor Campo Autor tabla Producto
+ * @param Genero Campo Genero tabla Producto
+ * @param Año Campo Año tabla Producto
+ * @param Precio Campo Precio tabla Producto
+ * @param boton boton que se encarga de añadir al carrito
+ * @param caja caja que contiene las opciones de admin
+ * @param editar ImagenView que se utiliza de icono
+ * @param eliminar ImageView que se utiliza de icono
+ * @param enunciado Label que muestra titulo de panel de administracion
+ * @param usuario Modelo del usuario que esta usando la aplicacion
+ * @param carro Lista con los productos que se estan guardando para comprar
+ * @param producto modelo con el producto que se va a mostrar
+ */
 public class MostrarProductoController {
     @FXML
     ImageView imagen;
@@ -44,6 +62,17 @@ public class MostrarProductoController {
 
     ProductoModel producto;
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param fxmlLoader objeto que se utiliza para cargar diferentes archivos FXML
+     * @param root1 nodo principal del archivo FXML
+     * @param stage Escenario en el que se muestra la interfaz
+     * @param a objeto auxliar para pasar datos
+     * @param b objeto auxliar para cerrar la interfaz
+     * @param inicio controlador de la interfaz que se va a abrir para pasarle datos
+     */
 
     @FXML
     public void editarProducto(){
@@ -64,13 +93,26 @@ public class MostrarProductoController {
         }
     }
 
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param dao realiza las operaciones con la base de datos
+     */
+
     @FXML
     public void eliminarProducto(){
         DAO dao = new DAO();
         dao.eliminarProducto(producto);
     }
 
-
+    /*
+     * @author Miguel Angel Hernandez Rodriguez
+     * @version 1.0
+     * Rellena los datos
+     * @param productoModel modelo con el producto
+     * @param carro lista con el carro del usuario
+     */
 
     public void rellenarDatos(ProductoModel productoModel, ArrayList<ProductoModel> carro) {
         this.usuario=usuario;

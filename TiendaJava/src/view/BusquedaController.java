@@ -186,7 +186,10 @@ public class BusquedaController {
 
 
     @FXML
-    public void salir(){}
+    public void Salir(){
+        Stage a = (Stage) busqueda.getScene().getWindow();
+        a.close();
+    }
 
     /*
      * @author Miguel Angel Hernandez Rodriguez

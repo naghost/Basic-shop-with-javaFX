@@ -220,7 +220,7 @@ public class DAO {
                 case "Libros":
                     stmt.setInt(8,1);
                     break;
-                case "Musica":
+                case "Discos":
                     stmt.setInt(8, 2);
                     break;
                 case "Peliculas":
